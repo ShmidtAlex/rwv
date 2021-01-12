@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an Event Show Page</h1>
+    <h1>This is an Event Show Page #{{ id }}</h1>
   </div>
 </template>
 
@@ -8,6 +8,13 @@
 export default {
 
   name: 'EventShow',
+  
+  props: {
+    id: {
+      type: Number,
+      required: false
+    }
+  },
 
   data () {
     return {
