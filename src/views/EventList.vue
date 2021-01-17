@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <h1>Events Listing</h1>
-    <EventCard />
-    <router-link :to="{ name: 'event-show', params: { id: 1 } }">Show Event</router-link>  
+    <EventCard />  
+    <BaseIcon />
   </div>
 </template>
 

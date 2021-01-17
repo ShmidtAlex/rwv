@@ -1,10 +1,14 @@
 <template>
+  <router-link class="event-link" :to="{ name: 'event-show', params: { id: 1 } }">
   <div class="event-card -shadow">
     <span class="eybrow">@{{ event.time }} on {{ event.date }}</span>
     <h4 class="title">{{ event.title }}</h4>
-    <span>{{ event.attendees.length }} attending </span>    
+    <div style="display:flex; justify-content: space-between; width: 25%">
+      <BaseIcon name="users"><div class="slot-content" slot="heading">{{ event.attendees.length }} attending</div></BaseIcon>
+    </div>
+      
   </div>
-  
+  </router-link>
 </template>
 
 <script>
@@ -35,7 +39,11 @@ export default {
     margin-bottom: 24px;
     transition: all 0.2s linear;
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 3px;    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2), 0 1px 7px 0 rgba(0,0,0, 0.19);
   }
   .event-card:hover {
     transform: scale(1.01);
@@ -50,5 +58,9 @@ export default {
   }
   h4 {
     color: green;
+  }
+  .slot-content {
+    color: rgba(0,0,0, .8);
+    font-weight: 600;
   }
 </style>
