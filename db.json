@@ -44,6 +44,100 @@
       "date": "2019-02-02T23:27:00.000Z",
       "time": "1:00",
       "attendees": []
+    },
+    {
+      "id": 3383753,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "Works?",
+      "description": "",
+      "location": "",
+      "date": "",
+      "time": "",
+      "attendees": []
+    },
+    {
+      "id": 4975750,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "",
+      "organizer": "Adam Jahr",
+      "title": "Education",
+      "description": "description",
+      "location": "location",
+      "date": "",
+      "time": "",
+      "attendees": []
+    },
+    {
+      "id": 7708529,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "nature",
+      "organizer": "Adam Jahr",
+      "title": "Trees planting",
+      "description": "Have to plant three trees ",
+      "location": "Central park",
+      "date": "2021-01-01T18:22:00.000Z",
+      "time": "8:00",
+      "attendees": []
+    },
+    {
+      "id": 4513285,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "animal welfare",
+      "organizer": "Adam Jahr",
+      "title": "Groom the dog",
+      "description": "Visit groom master",
+      "location": "Down Town",
+      "date": "2021-01-02T18:25:00.000Z",
+      "time": "10:00",
+      "attendees": []
+    },
+    {
+      "id": 5356928,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "food",
+      "organizer": "Adam Jahr",
+      "title": "Make fries",
+      "description": "Fry potatoes",
+      "location": "Kitchen",
+      "date": "2021-01-02T19:44:00.000Z",
+      "time": "15:00",
+      "attendees": []
+    },
+    {
+      "id": 929142,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "education",
+      "organizer": "Adam Jahr",
+      "title": "Learn spanish",
+      "description": "Learn spanish on everyday basis",
+      "location": "Home, work, on all way",
+      "date": "2021-02-26T19:46:00.000Z",
+      "time": "20:00",
+      "attendees": []
     }
-  ]
+  ],
+  "create": []
 }

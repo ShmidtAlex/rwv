@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    <!-- <div id="nav"> -->
     <NavBar />
-      <!-- <router-link :to="{ name: 'user', params: { username: 'Alexander'} }">Alexander</router-link> -->
-    <!-- </div> -->
-    <router-view/>
+    <!-- :key="$route.fullPagh" allows reload page when user navigates between pages, using pagination -->
+    <router-view :key="$route.fullPath" />
   </div>
 </template>
 <script>

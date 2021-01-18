@@ -5,15 +5,17 @@ const apiClient = axios.create({
   header: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
-
   }
 })
 
 export default { 
-  getEvents() {
-    return apiClient.get('/events')
+  getEvents(perPage, currentPage) {
+    return apiClient.get(`/events?_limit=${ perPage }&_page=${currentPage}`)
   },
   getEvent(id) {
     return apiClient.get(`events/${id}`)
+  },
+  postEvent(event) {
+    return apiClient.post('/events', event)
   }
 }

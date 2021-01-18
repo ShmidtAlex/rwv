@@ -4,7 +4,7 @@
     <span class="eybrow">@{{ event.time }} on {{ event.date }}</span>
     <h4 class="title">{{ event.title }}</h4>
     <div style="display:flex; justify-content: space-between; width: 25%">
-      <BaseIcon name="users"><div class="slot-content" slot="heading">{{ event.attendees.length }} attending</div></BaseIcon>
+      <BaseIcon name="users"><div class="slot-content" slot="heading">{{  event.attendees ? event.attendees.length : 0 }} attending</div></BaseIcon>
     </div>
       
   </div>
@@ -57,7 +57,9 @@ export default {
     color: green;
   }
   .slot-content {
-    color: rgba(0,0,0, .8);
-    font-weight: 600;
+    color: rgba(0, 0, 0, 0.4);
+    font-weight: 800;
+    font-size: 17px;
+    min-width: fit-content;
   }
 </style>
