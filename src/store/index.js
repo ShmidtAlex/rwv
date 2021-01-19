@@ -28,14 +28,18 @@ export default new Vuex.Store({
       { id: 3, title: '...', organizer: '...' },
       { id: 4, title: '...', organizer: '...' },
     ],
-    totalPagesAmount: null
+    totalPagesAmount: null,
+    event: {}
   },
   mutations: {
     ADD_EVENT(state, event){
       state.events.push(event)
     },
     SET_EVENTS(state, events) {
-      state.events = events;
+      state.events = events
+    },
+    SET_EVENT(state, event) {
+      state.event = event
     },
     SET_TOTAL_PAGES(state, amount) {
       state.totalPagesAmount = amount
@@ -45,7 +49,6 @@ export default new Vuex.Store({
     createEvent({ commit }, event) {
       return EventService.postEvent(event).then(() => {
         commit('ADD_EVENT', event)
-
       })
     },
     fetchEvents({ commit }, { perPage, page }) {
@@ -57,6 +60,21 @@ export default new Vuex.Store({
       .catch(error => {
         console.log('There was an error:', error.response)
       })
+    },
+    fetchEvent({ commit, getters }, id) {
+      //this condition allows not to fetch data if they already exists
+      let event = getters.getEventById(id)
+      if(event) {
+        commit('SET_EVENT', event) 
+      } else {
+        EventService.getEvent(id)
+        .then(response => {        
+          commit('SET_EVENT', response.data) 
+        })
+        .catch(error => {
+          console.log(`there is an ${ error } on ShowPage`)
+        }) 
+      }
     }
   },
   getters: {
