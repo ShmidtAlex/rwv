@@ -1,15 +1,18 @@
 <template>
   <div id="app">
     <NavBar />
+    <NotificationContainer />
     <!-- :key="$route.fullPagh" allows reload page when user navigates between pages, using pagination -->
     <router-view :key="$route.fullPath" />
   </div>
 </template>
 <script>
   import NavBar from '@/components/NavBar.vue'
+  import NotificationContainer from '@/components/NotificationContainer.vue'
   export default {
     components: {
-      NavBar
+      NavBar,
+      NotificationContainer
     }
   }
 </script>
@@ -25,6 +28,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 #nav {

@@ -31,3 +31,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## Extra tasks (not implemented yet):
 
 	caching for routing during pagination
+	implement vuex namespasing
