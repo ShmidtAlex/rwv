@@ -137,6 +137,21 @@
       "date": "2021-02-26T19:46:00.000Z",
       "time": "20:00",
       "attendees": []
+    },
+    {
+      "id": 4824063,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "community",
+      "organizer": "Adam Jahr",
+      "title": "Help other student",
+      "description": "Explain vuex setting to trainee",
+      "location": "Home",
+      "date": "",
+      "time": "",
+      "attendees": []
     }
   ],
   "create": []

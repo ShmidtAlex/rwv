@@ -18,7 +18,11 @@ npm run build
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### Content:
+### Run json-server
+
+	json-server --watch db.json
+	
+## Content:
 	
 	Vuex organization
 	Routing
