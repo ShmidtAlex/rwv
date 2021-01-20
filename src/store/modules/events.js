@@ -75,7 +75,8 @@ export const actions = {
     if(event) {
       commit('SET_EVENT', event) 
     } else {
-      EventService.getEvent(id)
+      return EventService.getEvent(id)//returning helps us start next() function 
+      //(which downloads template), after function execution is copmleted
       .then(response => {        
         commit('SET_EVENT', response.data) 
       })

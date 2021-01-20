@@ -29,25 +29,38 @@
 </template>
 
 <script>
-  import { mapState, mapActions } from 'vuex'
+  //no longer need mapActions
+  import { mapState, /*mapActions*/ } from 'vuex'
+  import NProgress from 'nprogress'
+  //while we don't have access to 'this', we should import store directly:
+  import store from '@/store'
+  console.log(NProgress)
 export default {
 
   name: 'EventShow',
-  
+  beforeRouteEnter(routeTo, routeFrom, next){
+    NProgress.start()
+    store.dispatch('events/fetchEvent', routeTo.params.id).then(() => {
+      NProgress.done()
+      next()//but if we did only this, it won't help us in our problem, we should 
+      //correct it in events.js, returning EventService.getEvent(id), instead of simply evoking it
+    })
+  },
   props: {
     id: {
       type: String | Number,
       required: false
     }
   },
-
-  created(){   
-    // this.$store.dispatch('events/fetchEvent', this.id)
-     this.fetchEvent(this.id)
-  },
+//no longer need this hook
+  // created(){   
+  //   // this.$store.dispatch('events/fetchEvent', this.id)
+  //    this.fetchEvent(this.id)
+  // },
 
   methods: {
-    ...mapActions('events', ['fetchEvent'])
+    //no longer need map actions, because of evnoke fetchEvent directly
+    // ...mapActions('events', ['fetchEvent'])
   },
 
   computed: {

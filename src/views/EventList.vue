@@ -4,7 +4,7 @@
     <EventCard v-for="event in events.events" :key="event.id" :event="event" />  
     <div class="pagination-nav">
       <div class="first-page" v-if="page != 1">
-       <router-link :to="{ name: 'event-list', query: { page: page - 1}}" rel="prev"> Prev Page </router-link>
+       <router-link :to="{ name: 'event-list', query: { page: page - 1 }}" rel="prev"> Prev Page </router-link>
       </div>
       <span v-if="page != 1 && events.totalPagesAmount > page * perPage ">|</span>
       <div class="next-page" v-if="events.totalPagesAmount > page * perPage">
@@ -26,6 +26,7 @@ export default {
   components: {
     EventCard
   },
+  
   data () {
     return {
       // events: this.$store.state.events
@@ -36,8 +37,8 @@ export default {
     // this.$store.dispatch('events/fetchEvents', { 
     //   perPage: this.perPage,
     //   page: this.page
-    //    })// instead of these, we can use mapAction helper:
-    this.fetchEvents({ perPage: this.perPage, page: this.page})
+    //    })// instead of this, we can use mapAction helper:
+    this.fetchEvents({ perPage: this.perPage, page: this.page })
   },
   methods: {
     ...mapActions('events', ['fetchEvents'])

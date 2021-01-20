@@ -24,9 +24,13 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Content:
 	
-	Vuex organization
-	Routing
-	Pagination
+	1. Vuex organization
+	2. Routing
+	3. Pagination
+  4. Progress bar with 3 ways: 
+    a). axios interceptors 
+    b). in-component Route Guards 
+    c). global and Per-Route Guards
 
 ## Extra tasks (not implemented yet):
 
