@@ -120,6 +120,7 @@
 
 <script>
 import datepicker from 'vuejs-datepicker'
+import NProgress from 'nprogress'
 export default {
 
   name: 'EventCreate',
@@ -137,6 +138,7 @@ export default {
   },
   methods: {
     createEvent() {
+      NProgress.start()
       this.$store
       .dispatch('events/createEvent', this.event)
       .then(() => {
@@ -145,8 +147,9 @@ export default {
           params: { id: this.event.id }
         })
         this.event = this.createFreshEventObject();
-      }).catch(() => {})
-      
+      }).catch(() => {
+        NProgress.done()
+      })      
     },
     createFreshEventObject() {
      const user = this.$store.state.user.user    
