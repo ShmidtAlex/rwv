@@ -43,7 +43,7 @@ export default {
 
   created(){   
     // this.$store.dispatch('events/fetchEvent', this.id)
-     this.fetchEvent(this.id)
+     // this.fetchEvent(this.id)
   },
 
   methods: {

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Events for {{ user.user.name }}</h1>
-    <EventCard v-for="event in events.events" :key="event.id" :event="event" />  
+      <EventCard v-for="event in events.events" :key="event.id" :event="event" />  
     <div class="pagination-nav">
       <div class="first-page" v-if="page != 1">
        <router-link :to="{ name: 'event-list', query: { page: page - 1}}" rel="prev"> Prev Page </router-link>
@@ -20,7 +20,7 @@
 <script>
 import EventCard from '@/components/EventCard.vue'
 import { mapState, mapActions } from 'vuex'
-
+import store from '@/store'
 export default {
   name: 'EventList',
   components: {
@@ -29,19 +29,16 @@ export default {
   data () {
     return {
       // events: this.$store.state.events
-      perPage: 3
+      perPage: 3,
+      nextPageLoaded: false
     };
-  },
-  created() {
-    // this.$store.dispatch('events/fetchEvents', { 
-    //   perPage: this.perPage,
-    //   page: this.page
-    //    })// instead of these, we can use mapAction helper:
-    this.fetchEvents({ perPage: this.perPage, page: this.page})
-  },
-  methods: {
-    ...mapActions('events', ['fetchEvents'])
-  },
+  },  
+  beforeRouteUpdate(routeTo, routeFrom, next){
+    this.nextPageLoaded = true
+    store.dispatch('events/fetchEvents', { perPage: 3, page: routeTo.query.page }).then(() => {
+      next()
+    })
+  },   
   computed: {
     page() {
       return parseInt(this.$route.query.page || 1)

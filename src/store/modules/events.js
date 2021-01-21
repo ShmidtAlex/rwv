@@ -11,10 +11,7 @@ export const state = {
     { id: 4, text: '...', done: true },
   ],
   events: [
-    { id: 1, title: '...', organizer: '...' },
-    { id: 2, title: '...', organizer: '...' },
-    { id: 3, title: '...', organizer: '...' },
-    { id: 4, title: '...', organizer: '...' },
+    
   ],
   totalPagesAmount: null,
   event: {}
@@ -55,7 +52,7 @@ export const actions = {
     }) 
   },
   fetchEvents({ commit, dispatch, state }, { perPage, page }) {
-    EventService.getEvents(perPage, page)
+   return EventService.getEvents(perPage, page)
     .then(response => {
       commit('SET_TOTAL_PAGES', response.headers['x-total-count'])
       commit('SET_EVENTS', response.data)
@@ -75,7 +72,7 @@ export const actions = {
     if(event) {
       commit('SET_EVENT', event) 
     } else {
-      EventService.getEvent(id)
+      return EventService.getEvent(id)
       .then(response => {        
         commit('SET_EVENT', response.data) 
       })
