@@ -36,3 +36,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 	caching for routing during pagination
   remove vuex from vue-router interaction (l4NLV)
+  

@@ -13,9 +13,13 @@ const routes = [
     component: EventList,
     props: true,
     beforeEnter(routeTo, routeFrom, next){
-      store.dispatch('events/fetchEvents', { perPage: 3, page: routeTo.query.page }).then(() => {
+      store.dispatch('events/fetchEvents', { perPage: 3, page: routeTo.query.page ? routeTo.query.page : 1 }).then(() => {
         next()
       })
+       .catch((error) => {
+        console.log(error)
+       next({ name: 'network-issue', params: { resource: 'event' } })
+      })      
     }
   },  
   {
@@ -32,11 +36,32 @@ const routes = [
       store.dispatch('events/fetchEvent', routeTo.params.id).then(() => {
         next()
       })
+      .catch((error) => {
+        if(error.response && error.response.status == 404) {
+          next({ name: '404', params: { resource: 'event' } })
+        } else {
+          next({ name: 'network-issue' })
+        }
+        
+      })
     }
   },
   {
-    path: '*',
+    path: '/404',
+    name: '404',
+    props: true,
     component: () => import('../views/NotFoundComponent')
+  },
+  {
+    path: '/network-issue',
+    name: 'network-issue',
+    // props: true,
+    component: () => import('../views/NetworkErrorPage')
+  },
+  {
+    path: '*',
+    redirect: { name: '404', params: { resource: 'page' } }
+    // component: () => import('../views/NotFoundComponent')
   }
 
 ]
