@@ -18,7 +18,7 @@ const routes = [
       })
        .catch((error) => {
         console.log(error)
-       next({ name: 'network-issue', params: { resource: 'event' } })
+       next({ name: 'network-issue' })
       })      
     }
   },  
@@ -49,19 +49,17 @@ const routes = [
   {
     path: '/404',
     name: '404',
-    props: true,
+    props: true,    
     component: () => import('../views/NotFoundComponent')
   },
   {
     path: '/network-issue',
     name: 'network-issue',
-    // props: true,
     component: () => import('../views/NetworkErrorPage')
   },
   {
     path: '*',
     redirect: { name: '404', params: { resource: 'page' } }
-    // component: () => import('../views/NotFoundComponent')
   }
 
 ]
