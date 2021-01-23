@@ -21,23 +21,29 @@
       </template> -->
 
       <h3>Name & describe your event</h3>
-      <div class="field">
-        <label for="">Title</label>
-        <input type="text" v-model="event.title" placeholder="Add an event title">
-      </div>
-      <div class="field">
-        <label for="">Descritpion</label>
-        <input type="text" v-model="event.description" placeholder="Add a description">
-      </div>
-      <!-- <BaseInput
-        label="Title"
-        v-model="event.title"
-        type="text"
-        placeholder="Title"
-        class="field"
-        :class="{ error: $v.event.title.$error }"
+      <!-- <div class="field"> -->
+        <BaseInput
+          label="Title"
+          placeholder="Add an event title"
+          type="text"
+          v-model="event.title"
+          class="field"
+        />
+      <!-- </div> -->
+      
+       <!-- /*
         @blur="$v.event.title.$touch()"
-      /> -->
+        :class="{ error: $v.event.title.$error }"
+        */ -->
+      
+        <BaseInput
+          label="Descritpion"
+          placeholder="Add a description"
+          type="text"
+          v-model="event.description"
+          class="field"
+        />
+      
 
       <!-- <template v-if="$v.event.title.$error">
         <p v-if="!$v.event.title.required" class="errorMessage">Title is required.</p>
@@ -58,10 +64,14 @@
       </template> -->
 
       <h3>Where is your event?</h3>
-      <div class="field">
-        <label for="">Location</label>
-        <input type="text" v-model="event.location" placeholder="Add a location">
-      </div>
+       <BaseInput
+          label="Location"
+          placeholder="Add a location"
+          type="text"
+          v-model="event.location"
+          class="field"
+        />
+     
      <!--  <BaseInput
         label="Location"
         v-model="event.location"
@@ -166,6 +176,9 @@ export default {
         time: '',
         attendees: []
       }
+    },
+    changeTitle(value) {
+      this.title
     }
   },
   computed: {

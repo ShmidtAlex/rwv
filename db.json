@@ -317,6 +317,21 @@
       "date": "2021-06-16T17:38:00.000Z",
       "time": "14:00",
       "attendees": []
+    },
+    {
+      "id": 5318982,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "",
+      "organizer": "Adam Jahr",
+      "title": "Create a new creature",
+      "description": "",
+      "location": "",
+      "date": "",
+      "time": "",
+      "attendees": []
     }
   ],
   "create": []
