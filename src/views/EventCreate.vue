@@ -92,12 +92,7 @@
           placeholder="Select a date"          
         />
       </div>
-      <!-- <div class="field">
-        <label for="">Select a time</label>
-        <select v-model="event.time">
-          <option v-for="time in computedTimes" :key="time">{{ time }}</option>
-        </select>
-      </div> -->
+      
       <BaseSelect
         label="Select a time"
         :options="computedTimes"
