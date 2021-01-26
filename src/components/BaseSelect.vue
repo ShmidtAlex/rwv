@@ -28,16 +28,29 @@ export default {
       type: String
     }
   },
+  mounted(){
+    //resolves the problem, when user didn't choose any options, and going to use the selected option
+    this.setupInitialValue(this.options[0])
+  },
 
   data () {
     return {
 
     }
   },
+  
   methods: {
     updateValue(event) {
       //for this approach, is important name emit action 'input' exactly
       this.$emit('input', event.target.value)
+    },
+    setupInitialValue(value) {
+      this.$emit('input', value)
+    }
+  },
+  computed: {
+    computedValue() {
+      return this.value != '' ? this.value : this.options[0]
     }
   }
 }
