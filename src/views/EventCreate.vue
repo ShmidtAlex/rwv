@@ -2,20 +2,17 @@
   <div>
     <h1>Create an Event</h1>
     <form @submit.prevent="createEvent">
-      <div class="field">
-        <label for="">Select a category</label>
-        <select name="" id="" v-model="event.category">
-          <option v-for="cat in categories" :key="cat">{{ cat }}</option>
-        </select>
-      </div>
       
-      <!-- <BaseSelect
+      <BaseSelect
         label="Select a category"
         :options="categories"
+        class="field"
         v-model="event.category"
+      />
+
+        <!-- v-model="event.category"
         :class="{ error: $v.event.category.$error }"
-        @blur="$v.event.category.$touch()"
-      /> -->
+        @blur="$v.event.category.$touch()" -->
       <!-- <template v-if="$v.event.category.$error">
         <p v-if="!$v.event.category.required" class="errorMessage">Category is required.</p>
       </template> -->
@@ -95,12 +92,18 @@
           placeholder="Select a date"          
         />
       </div>
-      <div class="field">
+      <!-- <div class="field">
         <label for="">Select a time</label>
         <select v-model="event.time">
           <option v-for="time in computedTimes" :key="time">{{ time }}</option>
         </select>
-      </div>
+      </div> -->
+      <BaseSelect
+        label="Select a time"
+        :options="computedTimes"
+        class="field"
+        v-model="event.time"
+      />
       <!-- :input-class="{ error: $v.event.date.$error }"
           @opened="$v.event.date.$touch()" -->
 
