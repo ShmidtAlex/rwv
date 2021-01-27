@@ -120,9 +120,11 @@
       </template> -->
 
       <!-- <BaseButton type="submit" buttonClass="-fill-gradient" :disabled="$v.$anyError">Submit</BaseButton> -->
-      <button type="submit" buttonClass="-fill-gradient">Submit</button>
+          <!-- <button type="submit" buttonClass="-fill-gradient">Submit</button> -->
+          <BaseButton type="submit" buttonClass="-fill-gradient">Sumbit</BaseButton>
       <p class="errorMessage">Please fill out the required field(s).</p>
     </form>
+    <BaseButton type="button" @click="sendMessage">Send an email</BaseButton>
   </div>
 </template>
 
@@ -177,6 +179,9 @@ export default {
     },
     changeTitle(value) {
       this.title
+    },
+    sendMessage() {
+      console.log('the message has been sent')
     }
   },
   computed: {
