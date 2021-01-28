@@ -1,10 +1,11 @@
 <template>
   <div>
-    <label v-if="label" for="">{{ label }}</label>
-    <select name="" id="" @change="updateValue" v-bind="$attrs">
+    <label v-if="label">{{ label }}</label>
+    <!-- v-on listeners adds listeners from the parent scope -->
+    <select :value="value" @change="updateValue" v-bind="$attrs" v-on="$listeners">
       <option 
         v-for="option in options" 
-        :key="option" 
+        :key="option.id" 
         :value="option" 
         :selected="option === value">{{ option }}</option>
     </select>
@@ -30,7 +31,7 @@ export default {
   },
   mounted(){
     //resolves the problem, when user didn't choose any options, and going to use the selected option
-    this.setupInitialValue(this.options[0])
+    // this.setupInitialValue(this.options[0])
   },
 
   data () {
@@ -42,16 +43,19 @@ export default {
   methods: {
     updateValue(event) {
       //for this approach, is important name emit action 'input' exactly
+      console.log(event.target.value)
       this.$emit('input', event.target.value)
     },
-    setupInitialValue(value) {
-      this.$emit('input', value)
-    }
+    // we don't need it anymore, because of we set validation with vuelidate
+    // setupInitialValue(value) {
+      // this.$emit('input', value)
+    // }
   },
   computed: {
-    computedValue() {
-      return this.value != '' ? this.value : this.options[0]
-    }
+    // we don't need it anymore, because of we set validation with vuelidate
+    // computedValue() {
+      // return this.value != '' ? this.value : this.options[0]
+    // }
   }
 }
 </script>

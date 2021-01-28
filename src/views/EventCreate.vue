@@ -8,7 +8,13 @@
         :options="categories"
         class="field"
         v-model="event.category"
+        :class="{ error: $v.event.category.$error }"
+        @blur="$v.event.category.$touch()"
       />
+      <template v-if="$v.event.category.$error">
+        <p class="errorMessage" v-if="!$v.event.category.required">Category is required</p>
+      </template>
+      
 
         <!-- v-model="event.category"
         :class="{ error: $v.event.category.$error }"
@@ -98,7 +104,13 @@
         :options="computedTimes"
         class="field"
         v-model="event.time"
+        :class="{ error: $v.event.time.$error }"
+        @blur="$v.event.time.$touch()"
       />
+      <template v-if="$v.event.time.$error">
+        <p class="errorMessage" v-if="!$v.event.time.required">Time is required</p>
+      </template>
+      
       <!-- :input-class="{ error: $v.event.date.$error }"
           @opened="$v.event.date.$touch()" -->
 
@@ -131,6 +143,7 @@
 <script>
 import datepicker from 'vuejs-datepicker'
 import NProgress from 'nprogress'
+import { required, email } from 'vuelidate/lib/validators'
 export default {
 
   name: 'EventCreate',
@@ -146,6 +159,7 @@ export default {
       times: []
     }
   },
+
   methods: {
     createEvent() {
       NProgress.start()
@@ -184,6 +198,18 @@ export default {
       console.log('the message has been sent')
     }
   },
+
+  validations: {
+    event: {
+      category: { required },
+      title: { required },
+      description: { required },
+      location: { required },
+      date: { required },
+      time: { required },
+    }  
+  },
+
   computed: {
     computedTimes() {
       for (let i = 1; i <= 24; i++){
@@ -191,7 +217,7 @@ export default {
       }
       return this.times
     },
-  } 
+  }
 }
 </script>
 
@@ -218,5 +244,13 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+  .error {
+    border: 1px solid red;
+  }
+  .error-message {
+    color: red;
+    font-weight: bold;
+    font-size: 15px;
   }
 </style>

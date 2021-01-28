@@ -31,6 +31,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     a). axios interceptors 
     b). in-component Route Guards 
     c). global and Per-Route Guards
+  5. Validation by Vuelidate library (l8NLV)
 
 ## Extra tasks (not implemented yet):
 
