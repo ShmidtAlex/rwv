@@ -31,7 +31,12 @@
           type="text"
           v-model="event.title"
           class="field"
+          :class="{ error: $v.event.title.$error }"
+          @blur="$v.event.title.$touch()"
         />
+      <template v-if="$v.event.title.$error">
+        <p class="errorMessage" v-if="!$v.event.title.required">Title is required</p>
+      </template>
       <!-- </div> -->
       
        <!-- /*
@@ -45,7 +50,12 @@
           type="text"
           v-model="event.description"
           class="field"
+          :class="{ error: $v.event.description.$error }"
+          @blur="$v.event.description.$touch()"
         />
+      <template v-if="$v.event.description.$error">
+        <p class="errorMessage" v-if="!$v.event.description.required">description is required</p>
+      </template>
       
 
       <!-- <template v-if="$v.event.title.$error">
@@ -73,7 +83,12 @@
           type="text"
           v-model="event.location"
           class="field"
+          :class="{ error: $v.event.location.$error }"
+          @blur="$v.event.location.$touch()"
         />
+      <!-- <template v-if="$v.event.location.$error"> -->
+        <p class="errorMessage" v-if="!$v.event.location.required">Location is required</p>
+      <!-- </template> -->
      
      <!--  <BaseInput
         label="Location"

@@ -2,7 +2,7 @@
   <div>
     <label v-if="label">{{ label }}</label>
     <!-- v-on listeners adds listeners from the parent scope -->
-    <select :value="value" @change="updateValue" v-bind="$attrs" v-on="$listeners">
+    <select :value="value" @change="updateValue" v-bind="$attrs" v-on="listeners">
       <option 
         v-for="option in options" 
         :key="option.id" 
@@ -29,10 +29,13 @@ export default {
       type: String
     }
   },
+
   mounted(){
+    /*we don't need it anymore*/
     //resolves the problem, when user didn't choose any options, and going to use the selected option
     // this.setupInitialValue(this.options[0])
   },
+
 
   data () {
     return {
@@ -43,7 +46,6 @@ export default {
   methods: {
     updateValue(event) {
       //for this approach, is important name emit action 'input' exactly
-      console.log(event.target.value)
       this.$emit('input', event.target.value)
     },
     // we don't need it anymore, because of we set validation with vuelidate
@@ -52,6 +54,13 @@ export default {
     // }
   },
   computed: {
+    //in order to avoid conflict between $listeners and @input, we should compute them before implement. in this case property lower down takes precedence
+    listeners() {
+      return {
+        ...this.$listeners,
+        input: this.updateValue
+      }
+    }
     // we don't need it anymore, because of we set validation with vuelidate
     // computedValue() {
       // return this.value != '' ? this.value : this.options[0]
