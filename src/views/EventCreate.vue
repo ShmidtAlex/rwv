@@ -108,11 +108,17 @@
 
       <div class="field">
         <label>Date</label>
+        <!-- "input-class", as an "@opened" event provided by vuejs-datepicker library -->
         <datepicker
           v-model="event.date"
-          placeholder="Select a date"          
+          placeholder="Select a date"
+          :input-class="{ error: $v.event.date.$error }"
+          @closed="$v.event.date.$touch()"
         />
       </div>
+      <template v-if="$v.event.date.$error">
+        <p v-if="!$v.event.date.required" class="errorMessage">Date is required.</p>
+      </template>
       
       <BaseSelect
         label="Select a time"
@@ -192,7 +198,7 @@ export default {
     },
     createFreshEventObject() {
      const user = this.$store.state.user.user    
-      const id = Math.floor(Math.random() * 10000000)
+     const id = Math.floor(Math.random() * 10000000)
       return {
         id: id,
         user: user,
