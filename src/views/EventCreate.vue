@@ -56,7 +56,9 @@
         :errorClass="$v.event.location.$error"
         @blur="$v.event.location.$touch()"
       />
-      <p class="errorMessage" v-if="!$v.event.location.required">Location is required</p>
+      <template v-if="$v.event.location.$error">
+        <p class="errorMessage" v-if="!$v.event.location.required">Location is required</p>
+      </template>
 
       <h3>When is your event?</h3>
       <div class="field">
@@ -249,7 +251,7 @@ export default {
   .error {
     border: 1px solid red;
   }
-  .error-message {
+  .errorMessage {
     color: red;
     font-weight: bold;
     font-size: 15px;

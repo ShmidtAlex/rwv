@@ -13,22 +13,16 @@
 </template>
 
 <script>
+import { formFieldMixin } from '@/mixins/formFieldMixin.js'
 export default {
-  inheritAttrs: false,
+  //instead of inheritAttrs we'll use mixin:
+  mixins: [formFieldMixin],
   name: 'BaseSelect',
   props: {
-    label: {
-      type: String,
-      default: ''
-    },
     options: {
       type: Array,// if the tipe of options is Object, better way to resolve problems = to use "Vue-multiselect" library
       required: true
-    },
-    value: {
-      type: String
-    },    
-    errorClass: Boolean
+    }
   },
 
   mounted(){
@@ -45,10 +39,11 @@ export default {
   },
   
   methods: {
-    updateValue(event) {
-      //for this approach, is important name emit action 'input' exactly
-      this.$emit('input', event.target.value)
-    },
+    //we don't need it anymore, because we use this function from mixin
+    // updateValue(event) {
+    //   //for this approach, is important name emit action 'input' exactly
+    //   this.$emit('input', event.target.value)
+    // },
     // we don't need it anymore, because of we set validation with vuelidate
     // setupInitialValue(value) {
       // this.$emit('input', value)
