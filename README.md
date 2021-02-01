@@ -20,13 +20,13 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Run json-server
 
-	json-server --watch db.json
+  json-server --watch db.json
 
 ## Content:
-	
+  
   1. Vuex organization
   2. Routing
-	3. Pagination
+  3. Pagination
   4. Progress bar with 3 ways: 
         - axios interceptors 
         - in-component Route Guards 
