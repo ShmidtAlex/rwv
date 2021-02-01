@@ -8,9 +8,11 @@
         :options="categories"
         class="field"
         v-model="event.category"
-        :class="{ error: $v.event.category.$error }"
+        :errorClass="$v.event.category.$error"
         @blur="$v.event.category.$touch()"
       />
+
+        <!-- :class="{ error: $v.event.category.$error }" -->
       <template v-if="$v.event.category.$error">
         <p class="errorMessage" v-if="!$v.event.category.required">Category is required</p>
       </template>
@@ -22,9 +24,11 @@
           type="text"
           v-model="event.title"
           class="field"
-          :class="{ error: $v.event.title.$error }"
+          :errorClass="$v.event.title.$error"
           @blur="$v.event.title.$touch()"
         />
+
+          <!-- :class="{ error: $v.event.title.$error }" -->
       <template v-if="$v.event.title.$error">
         <p class="errorMessage" v-if="!$v.event.title.required">Title is required</p>
       </template>
@@ -35,7 +39,7 @@
         type="text"
         v-model="event.description"
         class="field"
-        :class="{ error: $v.event.description.$error }"
+        :errorClass="$v.event.description.$error"
         @blur="$v.event.description.$touch()"
       />
       <template v-if="$v.event.description.$error">
@@ -49,7 +53,7 @@
         type="text"
         v-model="event.location"
         class="field"
-        :class="{ error: $v.event.location.$error }"
+        :errorClass="$v.event.location.$error"
         @blur="$v.event.location.$touch()"
       />
       <p class="errorMessage" v-if="!$v.event.location.required">Location is required</p>
@@ -74,7 +78,7 @@
         :options="computedTimes"
         class="field"
         v-model="event.time"
-        :class="{ error: $v.event.time.$error }"
+        :errorClass="$v.event.time.$error"
         @blur="$v.event.time.$touch()"
       />
       <template v-if="$v.event.time.$error">
@@ -82,7 +86,7 @@
       </template>
 
       <BaseButton type="submit" buttonClass="-fill-gradient" :disabled="$v.$anyError">Sumbit</BaseButton>
-      <p class="errorMessage">Please fill out the required field(s).</p>
+      <p v-if="$v.$anyError" class="errorMessage">Please fill out the required field(s).</p>
       
     </form>
     <BaseButton type="button" @click="sendMessage">Send an email</BaseButton>

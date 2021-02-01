@@ -2,7 +2,7 @@
   <div>
     <label v-if="label">{{ label }}</label>
     <!-- v-on listeners adds listeners from the parent scope -->
-    <select :value="value" @change="updateValue" v-bind="$attrs" v-on="listeners">
+    <select :value="value" @change="updateValue" v-bind="$attrs" v-on="listeners" :class="{ error: computedClass }">
       <option 
         v-for="option in options" 
         :key="option.id" 
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-
+  inheritAttrs: false,
   name: 'BaseSelect',
   props: {
     label: {
@@ -27,7 +27,8 @@ export default {
     },
     value: {
       type: String
-    }
+    },    
+    errorClass: Boolean
   },
 
   mounted(){
@@ -60,6 +61,9 @@ export default {
         ...this.$listeners,
         input: this.updateValue
       }
+    },
+    computedClass() {
+      return this.errorClass
     }
     // we don't need it anymore, because of we set validation with vuelidate
     // computedValue() {
@@ -74,5 +78,8 @@ input, select {
     width: 100%;
     margin: 5px 0;
     height: 30px;
+  }
+  .error {
+    border: 1px solid red;
   }
 </style>

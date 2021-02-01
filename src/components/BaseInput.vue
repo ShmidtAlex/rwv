@@ -1,7 +1,7 @@
 <template>
   <div>
     <label for="">{{ label }}</label>
-    <input :type="type" :placeholder="placeholder" :value="value" @input="updateValue" v-bind="$attrs" v-on="listeners">
+    <input :class="{ error: computedClass }" :type="type" :placeholder="placeholder" :value="value" @input="updateValue" v-bind="$attrs" v-on="listeners">
   </div>
 </template>
 
@@ -15,7 +15,8 @@ export default {
     },
     value: [String, Number],
     placeholder: String,
-    type: String
+    type: String,
+    errorClass: Boolean
   },
 
   name: 'BaseInput',
@@ -39,6 +40,9 @@ export default {
         ...this.$listeners,
         input: this.updateValue
       }
+    },
+    computedClass() {
+      return this.errorClass
     }
   }
 }
@@ -50,6 +54,9 @@ export default {
     width: 100%;
     margin: 5px 0;
     height: 30px;
+  }
+  .error {
+    border: 1px solid red;
   }
 }
 </style>
