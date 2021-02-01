@@ -7,13 +7,13 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@hokify/vuejs-datepicker": "^2.0.2",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "lodash.upperfirst": "^4.3.1",
     "nprogress": "^0.2.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
-    "vuejs-datepicker": "^1.6.2",
     "vuelidate": "^0.7.6",
     "vuex": "^3.4.0"
   },

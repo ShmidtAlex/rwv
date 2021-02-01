@@ -61,9 +61,10 @@
           v-model="event.date"
           placeholder="Select a date"
           :input-class="{ error: $v.event.date.$error }"
-          @closed="$v.event.date.$touch()"
+          @opened="$v.event.date.$touch()"
         />
       </div>
+      <!-- @opened="$v.event.date.$touch()" -->
       <template v-if="$v.event.date.$error">
         <p v-if="!$v.event.date.required" class="errorMessage">Date is required.</p>
       </template>
@@ -80,7 +81,7 @@
         <p class="errorMessage" v-if="!$v.event.time.required">Time is required</p>
       </template>
 
-      <BaseButton type="submit" buttonClass="-fill-gradient">Sumbit</BaseButton>
+      <BaseButton type="submit" buttonClass="-fill-gradient" :disabled="$v.$anyError">Sumbit</BaseButton>
       <p class="errorMessage">Please fill out the required field(s).</p>
       
     </form>
@@ -89,7 +90,7 @@
 </template>
 
 <script>
-import datepicker from 'vuejs-datepicker'
+import datepicker from '@hokify/vuejs-datepicker'
 import NProgress from 'nprogress'
 import { required, email } from 'vuelidate/lib/validators'
 export default {
@@ -110,18 +111,22 @@ export default {
 
   methods: {
     createEvent() {
-      NProgress.start()
-      this.$store
-      .dispatch('events/createEvent', this.event)
-      .then(() => {
-        this.$router.push({
-          name: 'event-show',
-          params: { id: this.event.id }
-        })
-        this.event = this.createFreshEventObject();
-      }).catch(() => {
-        NProgress.done()
-      })      
+      this.$v.$touch()
+      if(!this.$v.$invalid){
+
+        NProgress.start()
+        this.$store
+        .dispatch('events/createEvent', this.event)
+        .then(() => {
+          this.$router.push({
+            name: 'event-show',
+            params: { id: this.event.id }
+          })
+          this.event = this.createFreshEventObject();
+        }).catch(() => {
+          NProgress.done()
+        }) 
+      }     
     },
     createFreshEventObject() {
      const user = this.$store.state.user.user    
@@ -169,10 +174,54 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   li {
     text-align: left;
   }
+  .vdp-datepicker__calendar {
+    position: absolute;
+    z-index: 100;
+    background: #fff;
+    width: 300px;
+    border: 1px solid #ccc;
+  }
+  .vdp-datepicker__calendar header {
+    display: block;
+    line-height: 40px;
+  }
+  .vdp-datepicker__calendar header span {
+    display: inline-block;
+    text-align: center;
+    width: 71.42857142857143%;
+    float: left;
+  }
+  .vdp-datepicker__calendar header .next, .vdp-datepicker__calendar header .prev {
+    width: 14.285714285714286%;
+    float: left;
+    text-indent: -10000px;
+    position: relative;
+  }
+  .vdp-datepicker__calendar header span {
+    display: inline-block;
+    text-align: center;
+    width: 71.42857142857143%;
+    float: left;
+  } 
+  .vdp-datepicker__calendar .cell.day-header {
+    font-size: 75%;
+    white-space: nowrap;
+    cursor: inherit;
+  }
+  .vdp-datepicker__calendar .cell {
+    display: inline-block;
+    padding: 0 0px;
+    width: 12%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+  } 
   .field {
     display: flex;
     flex-direction: column;
