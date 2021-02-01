@@ -35,10 +35,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Extra tasks (not implemented yet):
 
-	```
   - caching for routing during Pagination
   - remove vuex from vue-router interaction (l4NLV)
   - setup date picker disallowing not to choose expired dates 
-  - setup validation for date picker  
-  ```
+  - ~setup validation for date picker~  
   
