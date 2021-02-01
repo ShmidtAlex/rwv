@@ -15,7 +15,6 @@
 <script>
 import { formFieldMixin } from '@/mixins/formFieldMixin.js'
 export default {
-  //instead of inheritAttrs we'll use mixin:
   mixins: [formFieldMixin],
   name: 'BaseSelect',
   props: {
@@ -25,30 +24,6 @@ export default {
     }
   },
 
-  mounted(){
-    /*we don't need it anymore*/
-    //resolves the problem, when user didn't choose any options, and going to use the selected option
-    // this.setupInitialValue(this.options[0])
-  },
-
-
-  data () {
-    return {
-
-    }
-  },
-  
-  methods: {
-    //we don't need it anymore, because we use this function from mixin
-    // updateValue(event) {
-    //   //for this approach, is important name emit action 'input' exactly
-    //   this.$emit('input', event.target.value)
-    // },
-    // we don't need it anymore, because of we set validation with vuelidate
-    // setupInitialValue(value) {
-      // this.$emit('input', value)
-    // }
-  },
   computed: {
     //in order to avoid conflict between $listeners and @input, we should compute them before implement. in this case property lower down takes precedence
     listeners() {
@@ -60,10 +35,6 @@ export default {
     computedClass() {
       return this.errorClass
     }
-    // we don't need it anymore, because of we set validation with vuelidate
-    // computedValue() {
-      // return this.value != '' ? this.value : this.options[0]
-    // }
   }
 }
 </script>

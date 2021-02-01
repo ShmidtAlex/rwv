@@ -40,4 +40,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
   - setup date picker disallowing not to choose expired dates 
   - ~setup validation for date picker~  
   - add checking if all filed are empty, form submit shouldn't work too
+  - set beautiful styles for components and error handlers
   

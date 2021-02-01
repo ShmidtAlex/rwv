@@ -8,11 +8,9 @@
 <script>
   import { formFieldMixin } from '@/mixins/formFieldMixin.js'
 export default {
-  //instead of inheritAttrs we'll use mixin:
   mixins: [formFieldMixin],
-  // inheritAttrs: false, //this, together with v-bind="$attrs" allows pull down class as a prop (and all input attributes too)
   props: {
-        placeholder: String,
+    placeholder: String,
     type: String,
   },
 
@@ -23,13 +21,7 @@ export default {
 
     }
   },
-  methods: {
-    //sinse we use mixins we don't need it anymore
-    // updateValue(event) {
-    //   //for this approach, is important name emit action 'input' exactly
-    //   this.$emit('input', event.target.value)
-    // }
-  },
+  
   computed: {
     /*n order to avoid conflict between $listeners and @input, we should compute them before implement. in this case property lower down takes precedence 
     (notes, that this approach require to remove $ sign from listeners in input above.)*/
