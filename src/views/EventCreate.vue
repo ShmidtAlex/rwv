@@ -12,7 +12,6 @@
         @blur="$v.event.category.$touch()"
       />
 
-        <!-- :class="{ error: $v.event.category.$error }" -->
       <template v-if="$v.event.category.$error">
         <p class="errorMessage" v-if="!$v.event.category.required">Category is required</p>
       </template>
@@ -28,7 +27,6 @@
           @blur="$v.event.title.$touch()"
         />
 
-          <!-- :class="{ error: $v.event.title.$error }" -->
       <template v-if="$v.event.title.$error">
         <p class="errorMessage" v-if="!$v.event.title.required">Title is required</p>
       </template>
@@ -70,7 +68,7 @@
           @opened="$v.event.date.$touch()"
         />
       </div>
-      <!-- @opened="$v.event.date.$touch()" -->
+      
       <template v-if="$v.event.date.$error">
         <p v-if="!$v.event.date.required" class="errorMessage">Date is required.</p>
       </template>
@@ -151,6 +149,7 @@ export default {
       }
     },
     changeTitle(value) {
+      
       this.title
     },
     sendMessage() {
@@ -189,45 +188,39 @@ export default {
     z-index: 100;
     background: #fff;
     width: 300px;
-    border: 1px solid #ccc;
+    border: 1px solid #ccc;  
+     header {
+      display: block;
+      line-height: 40px;
+      span {
+        display: inline-block;
+        text-align: center;
+        width: 71.42857142857143%;
+        float: left;
+      }
+      .next, .prev {
+        width: 14.285714285714286%;
+        float: left;
+        text-indent: -10000px;
+        position: relative;
+      }
+    }
+    .cell.day-header {
+      font-size: 75%;
+      white-space: nowrap;
+      cursor: inherit;
+    }
+    .cell {
+      display: inline-block;
+      padding: 0 0px;
+      width: 12%;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      vertical-align: middle;
+      border: 1px solid transparent;
+    } 
   }
-  .vdp-datepicker__calendar header {
-    display: block;
-    line-height: 40px;
-  }
-  .vdp-datepicker__calendar header span {
-    display: inline-block;
-    text-align: center;
-    width: 71.42857142857143%;
-    float: left;
-  }
-  .vdp-datepicker__calendar header .next, .vdp-datepicker__calendar header .prev {
-    width: 14.285714285714286%;
-    float: left;
-    text-indent: -10000px;
-    position: relative;
-  }
-  .vdp-datepicker__calendar header span {
-    display: inline-block;
-    text-align: center;
-    width: 71.42857142857143%;
-    float: left;
-  } 
-  .vdp-datepicker__calendar .cell.day-header {
-    font-size: 75%;
-    white-space: nowrap;
-    cursor: inherit;
-  }
-  .vdp-datepicker__calendar .cell {
-    display: inline-block;
-    padding: 0 0px;
-    width: 12%;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid transparent;
-  } 
   .field {
     display: flex;
     flex-direction: column;

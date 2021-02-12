@@ -57,14 +57,6 @@ export const actions = {
       commit('SET_TOTAL_PAGES', response.headers['x-total-count'])
       commit('SET_EVENTS', response.data)
     })
-    // .catch(error => {
-    //   const notification = {
-    //     type: 'error',
-    //     message: `There was a problem fetching events: ${ error.message }`
-    //   }
-    //   //became availiable, because of it was included in fetchEvent's object of arguments 
-    //   dispatch('notification/add', notification, { root: true })//last options helps to connect with store/index.js
-    // })
   },
   fetchEvent({ commit, getters, state, /*dispatch*/ }, id) {
     //this condition allows not to fetch data if they already exists
@@ -76,15 +68,6 @@ export const actions = {
       .then(response => {        
         commit('SET_EVENT', response.data) 
       })
-      //when we setted error page in router we don't need this catcher anymore and accordingly, 'dispatch' argument
-      //see router/index.js file
-      // .catch(error => {
-      //   const notification = {
-      //     type: 'error',
-      //     message: `There was a problem fetching separate event: ${ error.message }`
-      //   }
-      //   dispatch('notification/add', notification, { root: true })
-      // }) 
     }
   }
 }

@@ -23,8 +23,6 @@ export default {
   },
   
   computed: {
-    /*n order to avoid conflict between $listeners and @input, we should compute them before implement. in this case property lower down takes precedence 
-    (notes, that this approach require to remove $ sign from listeners in input above.)*/
     listeners() {
       return {
         ...this.$listeners,

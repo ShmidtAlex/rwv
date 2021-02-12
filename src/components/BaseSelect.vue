@@ -1,7 +1,6 @@
 <template>
   <div>
     <label v-if="label">{{ label }}</label>
-    <!-- v-on listeners adds listeners from the parent scope -->
     <select :value="value" @change="updateValue" v-bind="$attrs" v-on="listeners" :class="{ error: computedClass }">
       <option 
         v-for="option in options" 
@@ -19,13 +18,12 @@ export default {
   name: 'BaseSelect',
   props: {
     options: {
-      type: Array,// if the tipe of options is Object, better way to resolve problems = to use "Vue-multiselect" library
+      type: Array,
       required: true
     }
   },
 
   computed: {
-    //in order to avoid conflict between $listeners and @input, we should compute them before implement. in this case property lower down takes precedence
     listeners() {
       return {
         ...this.$listeners,

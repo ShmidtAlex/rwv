@@ -1,7 +1,7 @@
 <template>
   <router-link class="event-link" :to="{ name: 'event-show', params: { id: event.id } }">
   <div class="event-card -shadow">
-    <span class="eybrow">@{{ event.time }} on {{ event.date }}</span>
+    <span class="eybrow">@{{ event.time }} on {{ event.date | date }}</span>
     <h4 class="title">{{ event.title }}</h4>
     <div style="display:flex; justify-content: space-between; width: 25%">
       <BaseIcon name="users"><div class="slot-content" slot="heading">{{  event.attendees ? event.attendees.length : 0 }} attending</div></BaseIcon>

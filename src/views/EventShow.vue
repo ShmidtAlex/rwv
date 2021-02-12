@@ -1,8 +1,7 @@
 <template>
    <div>
-    <!-- <div class="show-event" v-if="Object.keys(event).length"> -->
       <div class="event-header">
-        <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
+        <span class="eyebrow">@{{ event.time }} on {{ event.date | date }}</span>
         <h1 class="title">{{ event.title }}</h1>
         <h5>Organized by {{ event.organizer ? event.organizer : '' }}</h5>
         <h5>Category: {{ event.category }}</h5>
@@ -26,36 +25,20 @@
           <b>{{ attendee.name }}</b>
         </li>
       </ul>
-    <!-- </div> -->
-    <!-- <div v-else class="show-notFound">
-      <NotFoundComponent />
-    </div> -->
-    
   </div>
 </template>
 
 <script>
   import { mapState, mapActions } from 'vuex'
-  // import  NotFoundComponent from './NotFoundComponent.vue'
-  // console.log(NotFoundComponent)
 export default {
 
   name: 'EventShow',
-
-  // components: {
-  //   NotFoundComponent
-  // },
   
   props: {
     id: {
       type: String | Number,
       required: false
     }
-  },
-
-  created(){   
-    // this.$store.dispatch('events/fetchEvent', this.id)
-     // this.fetchEvent(this.id)
   },
 
   methods: {
@@ -70,7 +53,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .location {
   margin-bottom: 0;
 }

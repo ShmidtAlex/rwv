@@ -28,7 +28,6 @@ export default {
   },
   data () {
     return {
-      // events: this.$store.state.events
       perPage: 3,
       nextPageLoaded: false
     };
